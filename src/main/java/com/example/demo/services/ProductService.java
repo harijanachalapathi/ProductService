@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import java.util.List;
 
-import com.example.demo.dtos.CreateProductRequestDto;
 import com.example.demo.models.Product;
 
 public interface ProductService {
@@ -11,5 +10,9 @@ public interface ProductService {
 
     Product getSingleProduct(long id);
 
-    Product createProduct(CreateProductRequestDto createProductRequestDto);
+    Product createProduct(String title, 
+                          String description, 
+                          double price, 
+                          String imageUrl,
+                          String category);
 }
