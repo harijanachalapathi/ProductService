@@ -3,10 +3,10 @@ package com.example.demo.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.dtos.CreateProductRequestDto;
 import com.example.demo.dtos.FakeStoreProductDtos;
 import com.example.demo.models.Product;
 
@@ -47,16 +47,27 @@ public class FakeStoreProductService implements ProductService{
     public Product getSingleProduct(long id) {
         // Implementation to fetch a single product by id
 
-        FakeStoreProductDtos fakeStoreProductDtos = restTemplate.getForObject("https://fakestoreapi.com/products/" + id, 
+        ResponseEntity<FakeStoreProductDtos> fakeStoreProductDtosResponseEntity = restTemplate.getForEntity("https://fakestoreapi.com/products/" + id, 
         FakeStoreProductDtos.class);
 
-        return fakeStoreProductDtos.toProduct();
+        return fakeStoreProductDtosResponseEntity.getBody().toProduct();
     }
 
     @Override
-    public Product createProduct(CreateProductRequestDto createProductRequestDto) {
+    public Product createProduct(String title, 
+                          String description, 
+                          double price, 
+                          String imageUrl,
+                          String category) {
         // Implementation to create a new product
-        return null;
+        FakeStoreProductDtos fakeStoreProductDtos = new FakeStoreProductDtos();
+        fakeStoreProductDtos.setTitle(title);
+        fakeStoreProductDtos.setDescription(description);
+        fakeStoreProductDtos.setPrice(price);
+        fakeStoreProductDtos.setImage(imageUrl);
+        fakeStoreProductDtos.setCategory(category);
+
+        return restTemplate.postForObject("https://fakestoreapi.com/products", fakeStoreProductDtos, FakeStoreProductDtos.class).toProduct();
     }
 
 }
