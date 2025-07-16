@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 import com.example.demo.dtos.CreateProductRequestDto;
 import com.example.demo.models.Product; // Add this import if Product is in models package
@@ -29,8 +30,11 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")    
-    public Product getSingleProduct(@PathVariable("id") long id) {
-        return productService.getSingleProduct(id);
+    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") long id) {
+        Product p =  productService.getSingleProduct(id);
+        ResponseEntity<Product> responseEntity = new ResponseEntity<>(p, HttpStatus.OK);
+        return responseEntity;
+
     }
 
     //create a product
