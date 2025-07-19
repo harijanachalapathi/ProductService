@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.dtos.FakeStoreProductDtos;
 import com.example.demo.models.Product;
+import com.example.demo.repositories.CategoryRepository;
+
 
 
 // import com.example.demo.controllers.dtos.FakeStoreProductDto;
@@ -17,7 +19,6 @@ import com.example.demo.models.Product;
 // import com.example.demo.dtos.FakeStoreProductDto;
 
 // Or, if the class does not exist, create it in the appropriate package (e.g., com.example.demo.dtos).
-
 
 
 @Service
