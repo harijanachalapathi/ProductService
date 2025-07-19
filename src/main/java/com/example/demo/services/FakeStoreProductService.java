@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.dtos.CreateProductRequestDto;
 import com.example.demo.dtos.FakeStoreProductDtos;
 import com.example.demo.models.Product;
+import com.example.demo.repositories.CategoryRepository;
+
 
 
 // import com.example.demo.controllers.dtos.FakeStoreProductDto;
@@ -17,7 +19,6 @@ import com.example.demo.models.Product;
 // import com.example.demo.dtos.FakeStoreProductDto;
 
 // Or, if the class does not exist, create it in the appropriate package (e.g., com.example.demo.dtos).
-
 
 
 @Service
@@ -53,10 +54,10 @@ public class FakeStoreProductService implements ProductService{
         return fakeStoreProductDtos.toProduct();
     }
 
-    @Override
-    public Product createProduct(CreateProductRequestDto createProductRequestDto) {
-        // Implementation to create a new product
-        return null;
-    }
+    // @Override
+    // public Product createProduct(CreateProductRequestDto createProductRequestDto) {
+    //     // Implementation to create a new product
+    //     return null;
+    // }
 
 }
