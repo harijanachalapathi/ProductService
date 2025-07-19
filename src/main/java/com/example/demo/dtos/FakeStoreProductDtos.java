@@ -28,7 +28,7 @@ public Product toProduct(){
     category1.setTitle(category);
 
 
-   product.setCategory(category);
+   product.setAbcCategory(category1);
    product.setImageurl(image);
 
     return product;
