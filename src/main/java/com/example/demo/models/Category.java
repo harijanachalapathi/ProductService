@@ -1,5 +1,11 @@
 package com.example.demo.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +15,13 @@ import lombok.Setter;
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-public class Category {
+    @Entity
+public class Category extends BaseModel{
     
-    private int id;
+    @Id
     private String title;
+    
+    @OneToMany(mappedBy="abcCategory", cascade = {CascadeType.REMOVE})
+    List<Product> product;
 
 }
